@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<table class="mGrid" id="jsondata">
+<thead>
+<th>Device ID</th>
+<th>Device Label</th>
+<th>Last Reported</th>
+<th>Status</th>
+</thead>
+<tbody></tbody>
+</table>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+var url="http://localhost/fleet/fleets/";
+$("#jsondata tbody").html("");
+$.getJSON(url,function(data){
+$.each(data.fleets, function(i,fleet){
+var newRow =
+"<tr>"
++"<td>"+fleet.device_id+"</td>"
++"<td>"+fleet.device_label+"</td>"
++"<td>"+fleet.last_reported+"</td>"
++"<td>"+fleet.status+"</td>"
++"</tr>" ;
+$(newRow).appendTo("#jsondata tbody");
+});
+});
+});
+
+</script>
+<p style="text-align: justify;">
+
+</body>
+</html>
